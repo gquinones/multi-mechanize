@@ -50,7 +50,7 @@ class Transaction(object):
         
             self.custom_timers['trie_service'] = latency
         
-            if latency > 1:
+            if latency > 3:
                 print url    
             assert (r.status_code == 200), 'Bad HTTP Response'
             assert ('foo' in r.text), 'No foo'
