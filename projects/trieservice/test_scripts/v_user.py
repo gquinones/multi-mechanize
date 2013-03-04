@@ -57,7 +57,7 @@ class Transaction(object):
         if latency > 5:
             writeErrorInfo('latency value of %f with %s' %(latency, url) )
         if r.status_code != 200:
-            writeErrorInfo('status code with %s is %s', r.status_code, url )
+            writeErrorInfo('status code with %s is %s' %(r.status_code, url) )
     
         assert (r.status_code == 200), 'Bad HTTP Response'
         assert ('foo' in r.text), 'No foo'
@@ -74,7 +74,8 @@ class Transaction(object):
         for char in word:
             item = item + char
             if len(item) > 1:
-                url = 'http://10.45.205.204:8080/typeahead/trie/?entity=org&value=' + item + '&callback=foo'
+                #url = 'http://10.45.205.204:8080/typeahead/trie/?entity=org&value=' + item + '&callback=foo'
+                url = 'http://10.20.41.208:8080/typeahead/trie/?entity=org&value=' + item + '&callback=foo'
                 self.makeCall( url )
             
 if __name__ == '__main__':
