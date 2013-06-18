@@ -12,10 +12,21 @@ import random
 import requests
 import time
 
-
 class Transaction(object):
     def __init__(self):
         self.custom_timers = {}
+    
+    def getConsultID(self):
+        return random.randrange(1600000, 1688915)
+        
+    def getCMIDList(self):
+        numtoget = random.randrange(5,20)
+        cmidList=""
+        for mynum in range(numtoget):
+            cmid = random.randrange(500000, 590000)
+            cmidList = cmidList + '&cmid=' + str(cmid)
+        return cmidList
+            
     
     def makeCall( self, url ):
         start_timer = time.time()
@@ -37,7 +48,11 @@ class Transaction(object):
         assert ('foo' in r.text), 'No foo'
     
     def run(self):
-        url = 'http://similarcm-dev.glgroup.com/recommend/consultrecsnorate?callback=foo&consultid=161115&cmid=580721&cmid=529311&cmid=597019&cmid=15646&cmid=153452&cmid=23646&cmid=45646'
+        consultID = str(self.getConsultID())
+        cmidList = self.getCMIDList()
+        #print consultID
+        url = 'http://similarcm-dev.glgroup.com/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
+        print url
         self.makeCall( url )
             
 if __name__ == '__main__':
