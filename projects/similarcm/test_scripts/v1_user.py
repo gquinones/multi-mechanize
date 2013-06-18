@@ -52,7 +52,7 @@ class Transaction(object):
         cmidList = self.getCMIDList()
         #print consultID
         url = 'http://similarcm-dev.glgroup.com/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
-        print url
+        #print url
         self.makeCall( url )
             
 if __name__ == '__main__':
