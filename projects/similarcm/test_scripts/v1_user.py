@@ -16,11 +16,25 @@ class Transaction(object):
     def __init__(self):
         self.custom_timers = {}
     
+    def writeErrorInfo(self, myInfo):
+    
+        basepath = os.path.dirname(__file__)
+        fileTarget = os.path.join(basepath, "testinfo.txt")
+
+        try:
+            logfile = open(fileTarget, "a")
+            print >> logfile, myInfo
+            logfile.close()
+        except Exception, err:
+            sys.stderr.write('ERROR: %s\n' % str(err))
+            sys.exit()
+            
     def getConsultID(self):
         return random.randrange(1600000, 1688915)
         
     def getCMIDList(self):
-        numtoget = random.randrange(5,20)
+        #numtoget = random.randrange(5,20)
+        numtoget = 5
         cmidList=""
         for mynum in range(numtoget):
             cmid = random.randrange(500000, 590000)
@@ -40,9 +54,9 @@ class Transaction(object):
         self.custom_timers['similarcm_service'] = latency
     
         if latency > 5:
-            writeErrorInfo('latency value of %f with %s' %(latency, url) )
+            self.writeErrorInfo('latency value of %f with %s' %(latency, url) )
         if r.status_code != 200:
-            writeErrorInfo('status code with %s is %s' %(r.status_code, url) )
+            self.writeErrorInfo('status code with %s is %s' %(r.status_code, url) )
     
         assert (r.status_code == 200), 'Bad HTTP Response'
         assert ('foo' in r.text), 'No foo'
@@ -52,6 +66,7 @@ class Transaction(object):
         cmidList = self.getCMIDList()
         #print consultID
         url = 'http://similarcm-dev.glgroup.com/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
+        #url = 'http://10.115.100.77:8080/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
         #print url
         self.makeCall( url )
             
