@@ -18,7 +18,7 @@ class Transaction(object):
     
     def run(self):
         start_timer = time.time()
-        resp = urllib2.urlopen('http://trendsetter.glgroup.com/')
+        resp = urllib2.urlopen('http://10.45.205.122/')
         #print resp.code
         
         content = resp.read()
