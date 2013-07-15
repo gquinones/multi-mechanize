@@ -74,8 +74,8 @@ class Transaction(object):
         for char in word:
             item = item + char
             if len(item) > 1:
-                #url = 'http://10.45.205.204:8080/typeahead/trie/?entity=org&value=' + item + '&callback=foo'
-                url = 'http://10.20.41.208:8080/typeahead/trie/?entity=org&value=' + item + '&callback=foo'
+                url = 'http://10.45.205.80:8080/typeahead/trie/?entity=org&value=' + item + '&callback=foo'
+                #url = 'http://10.20.41.208:8080/typeahead/trie/?entity=org&value=' + item + '&callback=foo'
                 self.makeCall( url )
             
 if __name__ == '__main__':
