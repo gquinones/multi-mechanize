@@ -30,7 +30,7 @@ class Transaction(object):
             sys.exit()
             
     def getConsultID(self):
-        return random.randrange(1600000, 1688915)
+        return random.randrange(1706000, 1706201)
         
     def getCMIDList(self):
         numtoget = random.randrange(5,20)
@@ -65,9 +65,9 @@ class Transaction(object):
         consultID = str(self.getConsultID())
         cmidList = self.getCMIDList()
         #print consultID
-        url = 'http://similarcm.glgroup.com/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
+        #url = 'http://similarcm.glgroup.com/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
         #url = 'http://similarcm-dev.glgroup.com/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
-        #url = 'http://10.45.205.188:8080/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
+        url = 'http://10.45.205.188:8080/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
         #url = 'http://10.115.100.77:8080/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
         # url = 'http://10.115.100.15:8081/recommend/consultrecsnorate?callback=foo&consultid=' + consultID + cmidList
         #print url
